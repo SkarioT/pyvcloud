@@ -111,6 +111,8 @@ def vdc_to_dict(vdc, access_control_settings=None):
     result = {}
     result['name'] = vdc.get('name')
     result['id'] = extract_id(vdc.get('id'))
+    if hasattr(vdc, 'Description'):
+        result['description'] = str(vdc.Description)
     if hasattr(vdc, 'IsEnabled'):
         result['is_enabled'] = bool(vdc.IsEnabled)
     if hasattr(vdc, 'AvailableNetworks') and \
